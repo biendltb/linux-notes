@@ -5,6 +5,7 @@
 
 ### Disable the annoying touch pad when typing and to have more control on it
 Link: https://askubuntu.com/questions/773595/how-can-i-disable-touchpad-while-typing-on-ubuntu-16-04-syndaemon-isnt-working
+
 Code:
 ```bash
 sudo add-apt-repository ppa:atareao/atareao
