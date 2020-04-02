@@ -73,7 +73,7 @@ docker run -itd --mount type=bind,source=$PWD,target=/dir/in/container test/my_i
 
 # "volume" gives the container the access and control a directory in file system
 # data is persistent, cannot modifed by non-docker process
-# prefered for release
+# prefered for release or immutable data accessing
 docker run -itd -v path/in/host:/path/in/docker test/my_image:v1
 
 # "tmpfs" is very rarely used
