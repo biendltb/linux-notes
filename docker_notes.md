@@ -99,6 +99,10 @@ docker run -itd --name <any_name_you_want> --mount type=bind,source=$PWD,target=
 # access to the container
 docker exec -it <image_name> bash
 ```
+Examples:
+```bash
+docker run -ti --rm --gpus all -e DISPLAY=$DISPLAY --mount type=bind,source=$PWD,target=/aic_people_counting -v /mnt/6e1ef38e-db2f-4eda-ad11-31252df3b87b/data/Datasets:/Datasets --net host --privileged posesdk:v1
+```
 
 * For test/release
 ```bash
