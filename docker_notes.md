@@ -58,7 +58,7 @@ docker run -itd test/my_image:v1
 docker run -itd --name container_1 test/my_image:v1
 ```
 
-* Add `--rm` to remove the container after existing (prefered for release or test)
+* Add `--rm` to remove all container's file systems after container exits. By default, the file systems persists so it's suitable for debugging to keep the default. This option is preferred for test and release to keep the container fresh and clean.
 
 ```bash
 docker run -it --rm test/my_image:v1
