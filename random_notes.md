@@ -24,4 +24,8 @@ Source: https://stackoverflow.com/questions/42796887/switch-focus-between-editor
 // Toggle between terminal and editor focus
 { "key": "ctrl+`", "command": "workbench.action.terminal.focus"},
 { "key": "ctrl+`", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"}
+
+// Toggle between open terminals
+{ "key": "ctrl+tab", "command": "workbench.action.terminal.focusNext", "when": "terminalFocus" },
+{ "key": "ctrl+tab", "command": "workbench.action.terminal.focusPrevious", "when": "terminalFocus" }
 ```
