@@ -58,6 +58,7 @@ int main(int argc, char *argv[]) {
 
 
 ### Check if a file/dir exists | create a dir using stat
+See more at: https://github.com/biendltb/linux-notes/blob/master/cpp/utils.hpp
 ```cpp
 #include <sys/stat.h>
 #include <sys/types.h>
