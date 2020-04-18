@@ -98,7 +98,7 @@ static bool createDirectory(const std::string &path) {
 ```
 
 
-### Getter/Setter
+### getters/setters
 More details: http://demin.ws/blog/english/2010/11/09/naming-convension-for-getters-and-setters-in-cpp/
 ```cpp
 // Java way
