@@ -45,6 +45,9 @@ namespace str {
 
 // Modified from: https://github.com/tobbez/string-splitting/blob/master/splitc3.cpp
 // With: https://stackoverflow.com/questions/7352099/stdstring-to-char
+// how to use:
+// std::vector<std::string> l_str0;
+// str::split(l_str0, f0_line, ",");
 static void split(std::vector<std::string> &tokens, std::string str,
         const char *delimiters) {
     char *cstr = new char[str.length() + 1];
