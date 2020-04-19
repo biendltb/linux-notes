@@ -64,9 +64,9 @@ docker run -itd --name container_1 test/my_image:v1
 docker run -it --rm test/my_image:v1
 ```
 
-* Three mount types in docker: **bin type**, **volume** and **tmpfs** (details: https://docs.docker.com/storage/)
+* Three mount types in docker: **bind mount**, **volume** and **tmpfs** (details: https://docs.docker.com/storage/)
 ```bash
-# "bin type" gives container access to a directory in file system 
+# "bind mount" gives container access to a directory in file system 
 # data could be modified by non-docker process (e.g. Visual Code), thus, prefered to use in development
 # (build in container, modified in a GUI IDE)
 docker run -itd --mount type=bind,source=$PWD,target=/dir/in/container test/my_image:v1
@@ -87,7 +87,13 @@ docker run -it --rm -e VAR=1 test/my_image:v1
 #### Attach to a running container
 Before running `docker exec`, we need to know the container name by run the command: `docker ps`
 ```bash
-docker exec -it <image_name> bash
+docker exec -it <container_name> bash
+```
+
+#### Stop a running container
+Run `docker ps` to see all container names.
+```bash
+docker stop <container_name>
 ```
 
 #### Typical commands
