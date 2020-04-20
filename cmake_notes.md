@@ -1,5 +1,98 @@
 
 ## CMake
+#### Header
+```cmake
+cmake_minimum_required(VERSION 3.0)
+
+# set project name and version
+project(<project_name> VERSION 1.0)
+
+# specify the C++ standard: 11 or 17
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+```
+
+#### Find a library
+```cmake
+find_package(PackageName 2.0 REQUIRED)
+if(NOT PackageName_FOUND)
+    message(FATAL_ERROR "PackageName not found")
+endif()
+```
+* Library variables (e.g. `<PackageName>_LIBS`, `<PackageName>_INCLUDE_DIR` will be set after the library found)
+* `<PackageName>_FOUND` indicates if the package found
+* Version `2.0` speficied could match 2.x, use `EXAC` to find the packlage in the exact version
+* Use `REQUIRED` to to show error if package not found and `QUIET` to ignore
+
+#### Build a library
+```cmake
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+
+# add library: add our own code so that the executable could use when they are compiled
+add_library(${PROJECT_NAME} SHARED
+    src/abc/def.cc
+    ...
+)
+
+target_link_libraries(${PROJECT_NAME}
+    ${lib1_LIBS}
+    ${lib2_LIBRARIES}
+    ${PROJECT_SOURCE_DIR}/Thirdparty/<LibraryName>/lib/lib<LibraryName>.so
+)
+
+target_include_directories(${PROJECT_NAME}
+${PROJECT_SOURCE_DIR}
+${PROJECT_SOURCE_DIR}/include
+${LibAbc_INCLUDE_DIR}
+${LibXyz_INCLUDE_DIRS}
+)
+
+```
+#### Build an executable
+```cmake
+# specified place to save executable file
+# unless executable file will be saved to build by default
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/abc/def)
+
+# Specify source files to build
+set(SOURCES
+    ${PROJECT_SOURCE_DIR}/abc/xyz.cc
+    path/to/source/file.cc
+}
+
+# add executable for demo, test, examples, etc.
+add_executable(<executable_name>
+    path/to/executable.cc
+    ${SOURCES}
+)
+target_include_directories(<executable_name> ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(<executable_name> ${PROJECT_NAME} ${<PackageName_LIBS>})
+```
+#### GLOB
+Instead of listing all the source files as shown above, GLOB makes listing source file easier.
+```cmake
+file(GLOB SOURCES
+    "abc/*.cc"
+    "abc/def/*.cc"
+)
+# message(STATUS ${SOURCES}
+```
+
+#### Main CMakeLists.txt
+Multiple CMakeLists.txt of different modules could be build at the same time. All we need to do is adding sub-directories which contains CMakeLists.txt to the main CMakeLists.txt
+```cmake
+# Main CMakeLists.txt
+cmake_minimum_required(VERSION 3.0)
+
+# set project name and version
+project(<project_name> VERSION 1.0)
+
+# specify the C++ standard: 11 or 17
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+add_subdirectory(/modules/abc/)
+```
 
 #### Simple `CMakeLists.txt`
 
@@ -59,6 +152,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/abc/def)
 # add executable for demo, test, examples, etc.
 add_executable(<executable_name>
     path/to/executable.cc
+    ${SOURCES}
 )
 target_include_directories(<executable_name> ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(<executable_name> ${PROJECT_NAME})
