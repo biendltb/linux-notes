@@ -96,7 +96,23 @@ Run `docker ps` to see all container names.
 docker stop <container_name>
 ```
 
-#### Typical commands
+#### Save a modified container to image
+```bash
+docker commit <container_name or container_id> <new_image_name:v1> 
+```
+
+#### Remove all stopped container
+```bash
+docker rm $(docker ps -a -q)
+```
+
+#### Remove an image
+```bash
+docker rmi <image1> <image2>
+```
+
+
+#### Example commands
 * For development
 ```bash
 # init a container and run in background
