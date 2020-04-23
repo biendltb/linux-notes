@@ -3,6 +3,14 @@
 ```bash
 git cherry-pick -n <commit>
 ```
+* Inspect the changes in each file
+```bash
+# for files not yet added
+git diff <file>
+
+# for files added before commit
+git diff --cached  src/vio/StateAugmentation.h
+```
 
 * Decide whether to reject unwanted changes by `reset`
 ```bash
