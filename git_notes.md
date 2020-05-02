@@ -20,3 +20,15 @@ git reset <file>
 ```
 
 * Commit the final changes
+
+#### Delete branch locally and remotely
+```bash
+# detele branch locally: '-d' = '--delete'
+git branch -d <branch_name>
+
+# 'D' = '--delete --force'
+git branch -D <branch_name>
+
+# delete remotely
+git push <remote_name> --delete <branch_name>
+```
