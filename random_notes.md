@@ -3,6 +3,9 @@
 * Download and install CuDNN + Cuda from NVIDIA website (Note: use the `runtime` version).
 * Install CUDA toolkit: `sudo apt install nvidia-cuda-toolkit`
 
+### To disable AMD graphic cards on Ubuntu PC
+https://askubuntu.com/questions/771562/16-04-power-off-discrete-graphics-ati-amd
+
 ### Touchpad
 Disable the annoying touch pad when typing and to have more control on it
 Link: https://askubuntu.com/questions/773595/how-can-i-disable-touchpad-while-typing-on-ubuntu-16-04-syndaemon-isnt-working
