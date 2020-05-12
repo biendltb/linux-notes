@@ -159,4 +159,31 @@ target_link_libraries(<executable_name> ${PROJECT_NAME})
 
 ```
 
-#### Other useful commands
+### Other useful commands
+#### `CMAKE_BUILD_TYPE` and CMake generator expression
+https://cmake.org/cmake/help/v3.11/manual/cmake-generator-expressions.7.html
+
+```bash
+if (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+    find_package( Pangolin REQUIRED )
+    message ( $<CMAKE_BUILD_TYPE>)
+endif (${CMAKE_BUILD_TYPE} MATCHES "Debug")
+
+
+#NOTE: NO SPACES, NO DOUBLE QUOTES IN "Debug"
+
+cmake -DCMAKE_BUILD_TYPE=Debug -DPERFORMANCE=ON -DVISUALIZATION=ON ../ && make -j$(($(nproc)-1))
+target_include_directories(${LIB} PUBLIC
+    # ${Pangolin_INCLUDE_DIRS}
+    $<$<STREQUAL:${CMAKE_BUILD_TYPE},Debug>:${Pangolin_INCLUDE_DIRS}>
+)
+
+target_link_libraries(${LIB}
+    # ${Pangolin_LIBRARIES}
+    $<$<STREQUAL:${CMAKE_BUILD_TYPE},Debug>:${Pangolin_LIBRARIES}>
+)
+
+```
+
+
+
