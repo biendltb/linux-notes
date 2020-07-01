@@ -10,6 +10,19 @@ du -sh /home/* 2> /dev/null
 ```bash
 scp -P 2222 -r biendltb@dynim.ddns.net:/path/to/source/ /path/to/destination/
 ```
+
+#### Safely move directories
+```bash
+# Copy from A to B by 'rsync', P--> showing progress
+sudo rsync -aXSP /src_dir/ /dst_dir/
+
+# check if the copy successfully
+sudo diff -r /src_dir/ /dst_dir/
+
+# delete the src_dir
+rm -rf /src_dir/
+
+```
   
 #### Find some files
 * Normal find
