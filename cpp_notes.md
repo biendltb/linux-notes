@@ -121,8 +121,7 @@ For print number with fixed width by filling '0' in
 
 ```cpp
 #include <iostream>
-
-
+#include <iomanip>
 
 # Note: std::fixed to keep the format along the current session
 # fill for int value where zeros could be fill in left side
