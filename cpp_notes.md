@@ -115,3 +115,25 @@ Foo foo;
 foo.setField(field_instance);
 field_instance = foo.getField();
 ```
+
+### stringstream or print text format
+For print number with fixed width by filling '0' in
+
+```cpp
+#include <iostream>
+
+
+
+# Note: std::fixed to keep the format along the current session
+# fill for int value where zeros could be fill in left side
+#define FORMAT_SET(x) std::setprecision(x) << std::right << std::setw(x) << std::setfill('0') << std::fixed
+
+# for floating point where zeros is fill on the decimal part
+#define FORMAT_SET(x) std::setprecision(x) << std::showpoint << std::fixed
+
+ss << FORMAT_SET(9)
+    << position.x() << " " << position.y() << " " << position.z() << " "
+    << FORMAT_SET(15)
+    << orientation.x() << " " << orientation.y() << " " << orientation.z() << " " << orientation.w() << "\n";
+```
+
