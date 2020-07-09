@@ -131,9 +131,12 @@ For print number with fixed width by filling '0' in
 # for floating point where zeros is fill on the decimal part
 #define FORMAT_SET(x) std::setprecision(x) << std::showpoint << std::fixed
 
+std::stringstream ss;
 ss << FORMAT_SET(9)
     << position.x() << " " << position.y() << " " << position.z() << " "
     << FORMAT_SET(15)
     << orientation.x() << " " << orientation.y() << " " << orientation.z() << " " << orientation.w() << "\n";
+    
+std::cout << ss.str();
 ```
 
