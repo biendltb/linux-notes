@@ -21,6 +21,12 @@ git reset <file>
 
 * Commit the final changes
 
+#### Copy a file from another branch and overwrite the corresponding one in current branch
+
+```bash
+git show experiment:path/to/test.cpp > path/to/test.cpp
+```
+
 #### Delete branch locally and remotely
 ```bash
 # detele branch locally: '-d' = '--delete'
