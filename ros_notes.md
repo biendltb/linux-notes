@@ -14,7 +14,14 @@ printenv | grep ROS
 ```bash
 # create a workspace folder any where (e.g. name 'catkin_ws')
 mkdir -p catkin_ws/src
+
 cd catkin_ws
+
+### For C++, clone the ROS package to the source folder (e.g. src/msckf_vio)
+# build the C++ package
+catkin_make --pkg <package name> --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+### For Python
 # point to the python that you're using (use `which python` to know the root path)
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 ```
