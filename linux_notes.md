@@ -58,3 +58,11 @@ tar -xvzf compressed_file.tar.gz -C /path/to/extraction/dir
 tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 ```
 
+#### Mount an external hard drive  
+  ```bash
+ # Show all available drives to find the right HDD port (e.g. `/dev/sdb1`)
+  >> lsblk
+  
+ # Mount
+  >> sudo mount /dev/sdb1 ~/HDD
+  ```
