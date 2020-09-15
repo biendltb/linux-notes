@@ -11,6 +11,18 @@ du -sh /home/* 2> /dev/null
 scp -P 2222 -r biendltb@dynim.ddns.net:/path/to/source/ /path/to/destination/
 ```
 
+#### Copy a specific types of file and/or with specific pattern of name
+* Case 1: depth level known
+```bash
+cp /src/**/gnss.csv --parents dest/
+# Note: this will result in de directory /dest/src/abc/gnss.csv so make appropriate `cd` inadvance if necessary
+```
+* Case 2: copy files at any depth
+```bash
+find /path/to/files -name '*.csv' | cpio -pdm /target
+# Note: it will find all of the file in /path/to/files and below and copy them to /target/path/to/files and below.
+```
+
 #### Safely move directories
 ```bash
 # Copy from A to B by 'rsync', P--> showing progress
