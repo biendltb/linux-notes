@@ -11,4 +11,6 @@ done
 string=YOUR-STRING
 echo ${string:<start>}
 echo ${string:<start>:<length>}
+# remove the last 4 characters (e.g. abc.pdf --> abc)
+echo ${string::-4}
 ```
