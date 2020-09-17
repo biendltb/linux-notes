@@ -96,3 +96,22 @@ rev path/to/file
 # example: cut the last 10 characters of every line
 rev path/to/file | cut -c -10 | rev
 ```
+
+#### Get the part of lines after a specific string
+For example, getting the part of text in a line after `[STAT][imu_pose]:`
+```txt
+[topics: /rosout, /tf, /ocams/vio/odom, /ocams/vio/feature_point_cloud, /ocams/vio/gt_odom] [STAT][imu_pose]: 1142.630000 29.252804 160.648717 10.042199 0.027129 -0.005577 0.937237 0.347592
+```
+Command:
+```bash
+cat ~/.ros/log/latest/rosout.log | sed -n -e 's/^.*\(\[STAT\]\[imu_pose\]: \)//p'
+```
+Explain:
+* `-n` means not to print anything by default.
+* `-e` is followed by a sed command.
+* `s` is the pattern replacement command.
+* The regular expression `^.*\(<search_text>\)`(e.g. `search_text` -> `[STAT][imu_pose]:` in this case) matches the pattern, plus any preceding text (`.*` meaning any text, with an initial `^` to say that the match begins at the beginning of the line). Note that if  occurs several times on the line, this will match the last occurrence.
+* The match, i.e. everything on the line up to the `search_text`, is replaced by the empty string (i.e. deleted).
+* The final `p` means to print the transformed line.
+
+Referece: https://unix.stackexchange.com/questions/24140/return-only-the-portion-of-a-line-after-a-matching-pattern
