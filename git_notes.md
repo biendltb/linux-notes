@@ -37,4 +37,6 @@ git branch -D <branch_name>
 
 # delete remotely
 git push <remote_name> --delete <branch_name>
+# or
+git push origin :<branch_name>
 ```

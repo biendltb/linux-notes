@@ -116,7 +116,7 @@ docker rmi <image1> <image2>
 * For development
 ```bash
 # init a container and run in background
-docker run -itd --name <any_name_you_want> --mount type=bind,source=$PWD,target=/dir/in/container test/my_image:v1
+docker run -itd --name <any_name_you_want> --mount type=bind,source=$PWD,target=/dir/in/container --name my-container test/my_image:v1
 
 # access to the container
 docker exec -it <image_name> bash

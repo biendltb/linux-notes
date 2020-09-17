@@ -11,6 +11,18 @@ du -sh /home/* 2> /dev/null
 scp -P 2222 -r biendltb@dynim.ddns.net:/path/to/source/ /path/to/destination/
 ```
 
+#### Copy a specific types of file and/or with specific pattern of name
+* Case 1: depth level known
+```bash
+cp /src/**/gnss.csv --parents dest/
+# Note: this will result in de directory /dest/src/abc/gnss.csv so make appropriate `cd` inadvance if necessary
+```
+* Case 2: copy files at any depth
+```bash
+find /path/to/files -name '*.csv' | cpio -pdm /target
+# Note: it will find all of the file in /path/to/files and below and copy them to /target/path/to/files and below.
+```
+
 #### Safely move directories
 ```bash
 # Copy from A to B by 'rsync', P--> showing progress
@@ -58,3 +70,19 @@ tar -xvzf compressed_file.tar.gz -C /path/to/extraction/dir
 tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 ```
 
+#### Mount an external hard drive  
+```bash
+# Create a folder to mount the HDD to
+>> mkdir ~/HDD
+
+# Show all available drives to find the right HDD port (e.g. `/dev/sdb1`)
+>> lsblk
+
+# Mount
+>> sudo mount /dev/sdb1 ~/HDD
+
+# Do the work ...
+
+# Unmount after use
+>> sudo umount ~/HDD
+```
