@@ -86,3 +86,13 @@ tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 # Unmount after use
 >> sudo umount ~/HDD
 ```
+
+### File and text editing
+
+#### Reverse lines of a file with `rev`
+
+```bash
+rev path/to/file
+# example: cut the last 10 characters of every line
+rev path/to/file | cut -c -10 | rev
+```
