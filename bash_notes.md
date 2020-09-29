@@ -24,7 +24,7 @@
         ...
     fi
     ```
-* Single curly brace - { ... }
+* Single curly brace - { ... } is for list and expansion
     * Use for **expansion**
     ```bash
     echo h{a,e,i,o,u}p
@@ -51,12 +51,14 @@
 
 Reference: https://www.assertnotmagic.com/2018/06/20/bash-brackets-quick-reference/
 
+
 #### Loop through results from find
 ```bash
 for i in $(find -name buffer_epoch.csv); do 
     echo $i 
 done
 ```
+
 
 #### Substring
 ```bash
