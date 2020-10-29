@@ -59,6 +59,13 @@ for i in $(find -name buffer_epoch.csv); do
 done
 ```
 
+#### Loop through a list
+```bash
+for i in {00,12,13}; do 
+    echo $i
+done
+```
+
 
 #### Substring
 ```bash
