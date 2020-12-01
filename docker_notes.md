@@ -1,4 +1,4 @@
-## Docker
+## Create and run a docker image
 #### Create a `Dockerfile`
 ```dockerfile
 # image name from docker hub or name of a local docker image
@@ -130,3 +130,21 @@ docker run -ti --rm --gpus all -e DISPLAY=$DISPLAY --mount type=bind,source=$PWD
 ```bash
 docker run -it --rm -v `pwd`:container/dir test/my_image:v1
 ```
+
+## Other docker tips
+#### Run docker without root permission
+1. Create the docker group if it does not exist
+    ```
+    $ sudo groupadd docker
+    ```
+2. Add your user to the docker group.
+    ```
+    $ sudo usermod -aG docker $USER
+    ```
+3. Run the following command or Logout and login again and run (that doesn't work you may need to reboot your machine first)
+    ```
+    $ newgrp docker
+    ```
+4. Reboot if there is still an error
+
+Ref: https://stackoverflow.com/questions/48957195/how-to-fix-docker-got-permission-denied-issue
