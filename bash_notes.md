@@ -75,3 +75,13 @@ echo ${string:<start>:<length>}
 # remove the last 4 characters (e.g. abc.pdf --> abc)
 echo ${string::-4}
 ```
+
+#### Check if a file exists
+```bash
+if [ -f tes*.sh ]; then
+    echo 'file exists'
+else
+    echo 'file does not exist'
+fi
+```
+
