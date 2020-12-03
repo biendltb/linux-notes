@@ -84,4 +84,10 @@ else
     echo 'file does not exist'
 fi
 ```
+To check file if file not exists, add `!`
+```bash
+if [ ! -f tes*.sh ]; then
+...
+```
+
 
