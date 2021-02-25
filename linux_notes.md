@@ -147,3 +147,9 @@ netstat -an
 
 ### Allow port from firewall with ufw
 Check https://linuxize.com/post/how-to-setup-a-firewall-with-ufw-on-ubuntu-18-04/
+
+### Test bandwidth of the connection from board to host machine
+
+```bash
+ssh root@192.168.86.22 "dd if=/dev/zero" | dd of=/dev/null status=progress
+```
