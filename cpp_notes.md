@@ -139,3 +139,10 @@ ss << FORMAT_SET(9)
 std::cout << ss.str();
 ```
 
+### Use smart pointers and avoid raw pointers in C++
+It's a good practice to use smart pointers in C++. Use `std::unique_ptr` for local pointers and `std::shared_ptr` for references and shareable pointers.
+
+```cpp
+// e.g. create a pointer for array of char with a specific size
+std::unique_ptr<char[]> buff = std::make_unique<char[]>(1024);
+```
