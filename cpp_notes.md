@@ -101,6 +101,7 @@ static bool createDirectory(const std::string &path) {
 
 ### getters/setters
 More details: http://demin.ws/blog/english/2010/11/09/naming-convension-for-getters-and-setters-in-cpp/
+In C++, if getters/setters are used for objects (e.g., `std::string`) rather than original type (`int`, `char`), it's better to set it as a reference instead of copy. Also, `const` should be used to avoid the change of return value.
 ```cpp
 // Java way
 class Foo {
@@ -147,15 +148,12 @@ It's a good practice to use smart pointers in C++. Use `std::unique_ptr` for loc
 std::unique_ptr<char[]> buff = std::make_unique<char[]>(1024);
 ```
 
-### Getters/Setters
-In C++, if getters/setters are used for objects (e.g., `std::string`) rather than original type (`int`, `char`), it's better to set it as a reference instead of copy. Also, constant should be used to avoid the change of return value.
+### Mutex and mutex wrappers
+Mutex is used to control the access of multiple threads to a shared resource.
 
-```cpp
-const std::string& Person::getName() {
-    return _name;
-}
+Controlling mutex by `lock()` and `unlock()` could be complicated. Errors could easily occur if the mutex is not released properly. The purposes of lock wrappers is to bind the lifetime of mutex to the lock wrapper (similar to the concept of smart pointers). 
 
-void Person::setName(const std::string& name) {
-    _name = name;
-}
-```
+Some mutex wrappers:
+* `lock_guard`: is the most simple form mutex wrapper, it takes ownership of mutex when being created and release the mutex when being destructed.
+* `unique_lock`: is more flexible than `lock_guard`. It won't lock immedately after created and could be unlock at any point of a function.
+* `scoped_lock`: introduce in C++ 17 to replace the `lock_guard` with more advance features such as holding multiple mutex at the same time.
