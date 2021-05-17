@@ -146,3 +146,16 @@ It's a good practice to use smart pointers in C++. Use `std::unique_ptr` for loc
 // e.g. create a pointer for array of char with a specific size
 std::unique_ptr<char[]> buff = std::make_unique<char[]>(1024);
 ```
+
+### Getters/Setters
+In C++, if getters/setters are used for objects (e.g., `std::string`) rather than original type (`int`, `char`), it's better to set it as a reference instead of copy. Also, constant should be used to avoid the change of return value.
+
+```cpp
+const std::string& Person::getName() {
+    return _name;
+}
+
+void Person::setName(const std::string& name) {
+    _name = name;
+}
+```
