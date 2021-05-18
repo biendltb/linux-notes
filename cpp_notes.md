@@ -151,9 +151,79 @@ std::unique_ptr<char[]> buff = std::make_unique<char[]>(1024);
 ### Mutex and mutex wrappers
 Mutex is used to control the access of multiple threads to a shared resource.
 
-Controlling mutex by `lock()` and `unlock()` could be complicated. Errors could easily occur if the mutex is not released properly. The purposes of lock wrappers is to bind the lifetime of mutex to the lock wrapper (similar to the concept of smart pointers). 
+Controlling mutex by `lock()` and `unlock()` could be complicated. Errors could easily occur if the mutex is not released properly. The purposes of lock wrappers is to bind the lock/release of a mutex to the initialize/destruction of a lock wrapper (similar to the concept of smart pointers), which is a RAII-style mechanism. This mechanism is similar to smart pointers to avoid forgetting to unlock the mutex after finish the operation which could potentially caused the deadlock.
 
 Some mutex wrappers:
 * `lock_guard`: is the most simple form mutex wrapper, it takes ownership of mutex when being created and release the mutex when being destructed.
 * `unique_lock`: is more flexible than `lock_guard`. It won't lock immedately after created and could be unlock at any point of a function.
-* `scoped_lock`: introduce in C++ 17 to replace the `lock_guard` with more advance features such as holding multiple mutex at the same time.
+* `scoped_lock`: introduces in C++ 17 to replace the `lock_guard` with more advance features such as holding multiple mutexes at the same time.
+
+### Conditional variable
+Mutex could be useful when two or more threads wait for each other to access or modify a shared resource. In many cases, one thread must wait for another thread to finish its task before the waiting thread could perfom its work.
+
+Take a simple example, one thread receives and process an image, another thread will save the processed image.
+
+Without using a conditional variable, the saving thread will have to always pool to check if the image is processed:
+```cpp
+Image im;
+bool is_processed = false;
+std::mutex mtx;
+
+void im_proc()
+{
+    std::lock_guard<std::mutex> lock(mtx);
+    // processing the image
+    is_processed = true;
+}
+
+void im_saving()
+{
+    while (true)
+    {
+        std::lock_guard<std::mutex> lock(mtx);
+        if (is_processed)
+        {
+            // save the image and exit the thread
+            break;
+        }
+     }
+}
+
+int main()
+{
+    std::thread t0(im_proc), t1(im_saving);
+    t0.join();
+    t1.join();
+    return 0;
+}
+```
+
+With conditional variable, the `std::conditional_variable` will do the job of handling the mutex and wait for you:
+```cpp
+Image im;
+std::conditional_variable cv;
+std::mutex mtx;
+
+void im_proc()
+{
+    std::lock_guard<std::mutex> lock(mtx);
+    // processing the image
+    cv.notify_one();
+}
+
+void im_saving()
+{
+    std::unique_lock<std::mutex> lock(mtx);
+    cv.wait(lock);
+    // save the image and exit the thread
+}
+
+int main()
+{
+    std::thread t0(im_proc), t1(im_saving);
+    t0.join();
+    t1.join();
+    return 0;
+}
+```
+Check the example in the cppreference page to see how a main thread and a worker thread work in sequentials parts of the pipeline using conditional variable: https://en.cppreference.com/w/cpp/thread/condition_variable
