@@ -227,3 +227,26 @@ int main()
 }
 ```
 Check the example in the cppreference page to see how a main thread and a worker thread work in sequentials parts of the pipeline using conditional variable: https://en.cppreference.com/w/cpp/thread/condition_variable
+
+### thread
+Quick notes:
+* Use `std::shared_ptr` for objects shared between threads
+* Avoid passing local variables to a lambda function as refereces since they no longer exist by the time the lambda function is called. Consider the copy.
+    ```cpp
+    // reference to local --> bad
+    thread_pool.queue_work([&] { process(local); });
+    // copy --> good
+    thread_pool.queue_work([=] { process(local); });
+    ```
+* Use `std::ref` when passing object as to a function with reference arguments (see example below)
+
+Passing a method of an object to a thread:
+```cpp
+void ClassA::test(ClassB &objB, bool c) {
+    // do something
+}
+
+void classA::testTh() {
+    std::thread t0(&ABC::test, this, std::ref(objX), y);
+}
+```
