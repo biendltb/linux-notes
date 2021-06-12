@@ -191,6 +191,21 @@ target_link_libraries(${LIB}
 
 ```
 
+#### Inject configure and build environment variables to source file
+There are some situations that some information that exists in the build time (e.g. versions, source paths, configurations) is needed to be injected to source file. This could be done with the `configure_file` keyword of CMake.
+First in the config file, we could use cmake variables as in CMakeLists.txt file, for example:
+```cpp
+#define VERSION "${MAJOR}.${MINOR}.${PATCH}-${VERSION_SUFFIX}"
+```
+And in CMakeLists.txt, those variables are assigned and fill to the source file and copy to the destination by:
+
+```cmake
+set(MAJOR 1)
+set(MINOR 0)
+set(PATCH 0)
+set(VERSION_SUFFIX "a1")
+configure_file(configure.h.in ${CMAKE_CURRENT_BINARY_DIR}/configure.h)
+```
 
 
 
