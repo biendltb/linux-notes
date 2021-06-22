@@ -10,3 +10,9 @@
         width: root.width
         size_hint_x: None
         ```
+
+### Custom an UI control
+* Examples: https://programmer.help/blogs/implementation-of-hover-event-in-kivy-control.html
+* Note:
+   * Not declare the inheritance in kv lang but in the Python code if some attributes/events are implement in Python code
+   * Include the Python class of the control to the python file of the target layout if the custom control is used in kv lang
