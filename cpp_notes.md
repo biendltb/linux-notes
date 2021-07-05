@@ -240,13 +240,23 @@ Quick notes:
     ```
 * Use `std::ref` when passing object as to a function with reference arguments (see example below)
 
-Passing a method of an object to a thread:
-```cpp
-void ClassA::test(ClassB &objB, bool c) {
-    // do something
-}
+    e.g. Passing a method of an object to a thread:
+    ```cpp
+    void ClassA::test(ClassB &objB, bool c) {
+        // do something
+    }
 
-void classA::testTh() {
-    std::thread t0(&ABC::test, this, std::ref(objX), y);
-}
-```
+    void classA::testTh() {
+        std::thread t0(&ABC::test, this, std::ref(objX), y);
+    }
+    ```
+
+## Fundamental tips:
+* Always pass objects as references in method parameters to save copy/memory. (Note: instances of `std::string` are objects).
+* An elegant for loop over an vector could be:
+    ```cpp
+    for (auto& x: v)
+    {
+        ...
+    }
+    ```
