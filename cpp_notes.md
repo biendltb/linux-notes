@@ -259,12 +259,15 @@ std::set<int> a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 std::set<int>::iterator it = a.begin();
 
 while (true) {
-    std::cout << *it << std::endl;
-    std::advance(it, 1);
+    std::cout << "Value:" << *it << std::endl;
     // reach the end
-    // Note: std::next will not increase it if it's not assigned
     if (std::next(it) == a.end())
         break;
+
+    int step = 3;
+    // if the distance to the end is smaller than the step, check to not overpass the end
+    step = std::distance(it, a.end()) <= step ? std::distance(it, a.end())-1 : step;
+    std::advance(it, step);
 }
 ```
 
