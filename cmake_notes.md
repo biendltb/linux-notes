@@ -137,7 +137,7 @@ target_link_libraries(${PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/Thirdparty/<LibraryName>/lib/lib<LibraryName>.so
 )
 
-target_include_directories(${PROJECT_NAME}
+target_include_directories(${PROJECT_NAME} PUBLIC
 ${PROJECT_SOURCE_DIR}
 ${PROJECT_SOURCE_DIR}/include
 ${LibAbc_INCLUDE_DIR}
@@ -154,7 +154,7 @@ add_executable(<executable_name>
     path/to/executable.cc
     ${SOURCES}
 )
-target_include_directories(<executable_name> ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(<executable_name> PUBLIC ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(<executable_name> ${PROJECT_NAME})
 
 ```
