@@ -42,7 +42,7 @@ target_link_libraries(${PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/Thirdparty/<LibraryName>/lib/lib<LibraryName>.so
 )
 
-target_include_directories(${PROJECT_NAME} <PRIVATE|Public>
+target_include_directories(${PROJECT_NAME} <PRIVATE|PUBLIC>
 ${PROJECT_SOURCE_DIR}
 ${PROJECT_SOURCE_DIR}/include
 ${LibAbc_INCLUDE_DIR}
