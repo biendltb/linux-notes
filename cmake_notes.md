@@ -25,6 +25,8 @@ endif()
 * Use `REQUIRED` to to show error if package not found and `QUIET` to ignore
 
 #### Build a library
+Note: Set  `PRIVATE` or `PUBLIC` for `target_include_directories` to allow/disallow other targets (e.g. in a subdirectories CMake) to access the include files when they use that library.
+
 ```cmake
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
@@ -40,7 +42,7 @@ target_link_libraries(${PROJECT_NAME}
     ${PROJECT_SOURCE_DIR}/Thirdparty/<LibraryName>/lib/lib<LibraryName>.so
 )
 
-target_include_directories(${PROJECT_NAME}
+target_include_directories(${PROJECT_NAME} <PRIVATE|Public>
 ${PROJECT_SOURCE_DIR}
 ${PROJECT_SOURCE_DIR}/include
 ${LibAbc_INCLUDE_DIR}
