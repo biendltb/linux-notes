@@ -250,3 +250,12 @@ void classA::testTh() {
     std::thread t0(&ABC::test, this, std::ref(objX), y);
 }
 ```
+
+### Define a macro
+```cpp
+#define CAST(x) static_cast<double>(static_cast<int>(x))
+
+...
+// e.g.
+std::cout << CAST(a-b) << std::endl;
+```

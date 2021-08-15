@@ -11,6 +11,8 @@
         size_hint_x: None
         ```
 
+* `FloatLayout`: this layout occupied a space as normal `Widget` or `GridLayout` and its children can only place within this space. The only information to arrange children of `FloatLayout` is `pos` which specify the bottom-left position of each child. If the size of the child is not specify, it will take the space from its position up and to the right until reaching the layout border.
+
 ### Custom an UI control
 * Examples: https://programmer.help/blogs/implementation-of-hover-event-in-kivy-control.html
 * Note:
