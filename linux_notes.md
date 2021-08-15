@@ -149,7 +149,18 @@ netstat -an
 Check https://linuxize.com/post/how-to-setup-a-firewall-with-ufw-on-ubuntu-18-04/
 
 ### Test bandwidth of the connection from board to host machine
-
 ```bash
 ssh root@192.168.86.22 "dd if=/dev/zero" | dd of=/dev/null status=progress
+```
+
+### Burn an image to SD card
+```bash
+# check the sd card path
+lsblk
+
+# unmount the SD card if it is mounted
+sudo umount /dev/sdx0
+
+# burn
+sudo dd bs=1M if=/path/to/images/sdcard.img of=/dev/sdx status=progress
 ```
