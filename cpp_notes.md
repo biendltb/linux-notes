@@ -240,14 +240,34 @@ Quick notes:
     ```
 * Use `std::ref` when passing object as to a function with reference arguments (see example below)
 
-Passing a method of an object to a thread:
-```cpp
-void ClassA::test(ClassB &objB, bool c) {
-    // do something
-}
+    e.g. Passing a method of an object to a thread:
+    ```cpp
+    void ClassA::test(ClassB &objB, bool c) {
+        // do something
+    }
 
-void classA::testTh() {
-    std::thread t0(&ABC::test, this, std::ref(objX), y);
+    void classA::testTh() {
+        std::thread t0(&ABC::test, this, std::ref(objX), y);
+    }
+    ```
+### Loop through a `std::vector` or a `std::set` using iterator
+When browse through a vector or set, we could use `std::advance` or `std::next` if we want to access the list arbitrarily, not follow any linear direction. Both `std::advance` and `std::next` allow us to increase/decrease an iterator but `std::next` get a copy, apply the change and return a value while `std::advance` does not return anything.
+
+e.g.:
+```cpp
+std::set<int> a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+std::set<int>::iterator it = a.begin();
+
+while (true) {
+    std::cout << "Value:" << *it << std::endl;
+    // reach the end
+    if (std::next(it) == a.end())
+        break;
+
+    int step = 3;
+    // if the distance to the end is smaller than the step, check to not overpass the end
+    step = std::distance(it, a.end()) <= step ? std::distance(it, a.end())-1 : step;
+    std::advance(it, step);
 }
 ```
 
@@ -259,3 +279,13 @@ void classA::testTh() {
 // e.g.
 std::cout << CAST(a-b) << std::endl;
 ```
+
+## Fundamental tips:
+* Always pass objects as references in method parameters to save copy/memory. (Note: instances of `std::string` are objects).
+* An elegant for loop over an vector could be:
+    ```cpp
+    for (auto& x: v)
+    {
+        ...
+    }
+    ```

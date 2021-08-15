@@ -18,3 +18,52 @@
 * Note:
    * Not declare the inheritance in kv lang but in the Python code if some attributes/events are implement in Python code
    * Include the Python class of the control to the python file of the target layout if the custom control is used in kv lang
+
+### Make a flat button with option of using icon
+```kv
+<FlatButton>:
+    background_color: 0., 0., 0., 0. # --> Make the button transparent
+    source: ''
+    canvas.before:
+        Color:
+            rgba: 0, 0.737, 0.831, 1  # --> Set button background color
+        Line:
+            width: 1
+            rectangle: self.x, self.y, self.width, self.height
+    Image:
+        opacity: 0.0 if self.source == '' else 1.0 # --> Make the icon invisible if there is no image source given
+        size_hint_x: None
+        width: 20
+        size_hint_y: None
+        height: self.parent.height
+        source: root.source
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+```
+
+### Bind a function to an event of a child widget
+
+When create a custom group of widgets, we have to pass values and event function binding to corresponding children's field.
+
+For example: create a group which include a CheckBox and a Label
+
+```kv
+MCheckBox:
+   m_text: 'Option 0'   #--> value pass to the Label
+   m_on_active: root.on_checkbox_active      #--> event binding function pass to the CheckBox
+   m_value: 2     #--> value for a custom field of a group
+
+<MCheckBox@GridLayout>:
+    cols: 2
+    m_text: ''
+    m_on_active: None
+    m_value: 0
+    CheckBox:
+        size_hint_x: 0.3
+        on_active: root.m_on_active(root.m_value, self.active)  #--> get the function from parent; call and pass values required here
+    MLabel:
+        size_hint_x: 0.7
+        text: root.m_text  #--> get text from parent
+
+```
+
