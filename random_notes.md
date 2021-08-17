@@ -20,18 +20,21 @@ sudo apt-get install touchpad-indicator
 ### VS Code
 * More convenient to switch between editor and integrated terminal
 Source: https://stackoverflow.com/questions/42796887/switch-focus-between-editor-and-integrated-terminalgit-in-visual-studio-code
-1) Ctrl + Shift + P
-2) Type `CMD-SHIFT-P -> Preferences: Open Keyboard Shortcuts File (json)`
-3) Add bellow
-```json
-// Toggle between terminal and editor focus
-{ "key": "ctrl+`", "command": "workbench.action.terminal.focus"},
-{ "key": "ctrl+`", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"}
+   1) Ctrl + Shift + P
+   2) Type `CMD-SHIFT-P -> Preferences: Open Keyboard Shortcuts File (json)`
+   3) Add bellow
+   ```json
+   // Toggle between terminal and editor focus
+   { "key": "ctrl+`", "command": "workbench.action.terminal.focus"},
+   { "key": "ctrl+`", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"}
 
-// Switch between open terminals
-{ "key": "ctrl+tab", "command": "workbench.action.terminal.focusNext", "when": "terminalFocus" },
-{ "key": "ctrl+tab", "command": "workbench.action.terminal.focusPrevious", "when": "terminalFocus" }
-```
+   // Switch between open terminals
+   { "key": "ctrl+tab", "command": "workbench.action.terminal.focusNext", "when": "terminalFocus" },
+   { "key": "ctrl+tab", "command": "workbench.action.terminal.focusPrevious", "when": "terminalFocus" }
+   ```
+* Insert a final newline at the end of the file:
+   1) Open File > Preferences > Settings
+   2) Type "insert final newline" and check the box
 
 ### Colorizing the git branch and shorten the directory path in terminal
 ```bash
