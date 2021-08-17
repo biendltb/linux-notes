@@ -19,7 +19,7 @@ sudo apt-get install touchpad-indicator
 
 ### VS Code
 * More convenient to switch between editor and integrated terminal
-Source: https://stackoverflow.com/questions/42796887/switch-focus-between-editor-and-integrated-terminal-in-visual-studio-code
+Source: https://stackoverflow.com/questions/42796887/switch-focus-between-editor-and-integrated-terminalgit-in-visual-studio-code
 1) Ctrl + Shift + P
 2) Type `CMD-SHIFT-P -> Preferences: Open Keyboard Shortcuts File (json)`
 3) Add bellow
@@ -31,4 +31,20 @@ Source: https://stackoverflow.com/questions/42796887/switch-focus-between-editor
 // Switch between open terminals
 { "key": "ctrl+tab", "command": "workbench.action.terminal.focusNext", "when": "terminalFocus" },
 { "key": "ctrl+tab", "command": "workbench.action.terminal.focusPrevious", "when": "terminalFocus" }
+```
+
+### Colorizing the git branch and shorten the directory path in terminal
+```bash
+# ===== colorising...
+
+function parse_git_branch () {
+   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+# colouring bash display
+YELLOW="\[\033[0;33m\]"
+# Comment in the above and uncomment this below for a color prompt
+PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W$YELLOW\$(parse_git_branch)\[\033[00m\]\$ "
+
+# ================
 ```

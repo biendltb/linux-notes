@@ -158,8 +158,8 @@ ssh root@192.168.86.22 "dd if=/dev/zero" | dd of=/dev/null status=progress
 # check the sd card path
 lsblk
 
-# unmount the SD card if it is mounted
-sudo umount /dev/sdx0
+# unmount all mounted partitions of the SD card if it is mounted
+sudo umount /dev/sdx0 /dev/sdx1
 
 # burn
 sudo dd bs=1M if=/path/to/images/sdcard.img of=/dev/sdx status=progress
