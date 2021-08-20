@@ -6,6 +6,21 @@ CMake let you got your code compiled without bothering much about the long comma
 g++ test_main.cpp -I/path/to/include/dir/  -L/path/to/source/dir/ -o test_main
 ```
 
+### DSO missing error
+It's a common error when the DSO missing error happen even all the library already specified with `find_package` of CMake, for example:
+```txt
+libpthread.so.0: error adding symbols: DSO missing from command line
+# or
+/usr/bin/ld: /lib/x86_64-linux-gnu/libglog.so.0: error adding symbols: DSO missing from command line
+```
+To solve this problem, we could specified the missing library in the target of `target_link_libraries`. ([check](https://stackoverflow.com/a/61346673/6088342)). For example:
+```cmake
+target_link_libraries(test_ceres PUBLIC
+    ${CMAKE_PROJECT_NAME}
+    glog
+)
+```
+
 ### Inheritance, virtual methods and list initialization
 I used to use Java a lot and love its keywords for creating abstract class and interfaces.
 C++ has less flexible design for it but we still have various way to deal with it.
