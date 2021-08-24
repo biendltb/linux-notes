@@ -4,7 +4,7 @@
 Install OpenCV with `opencv_contrib`:
 ```bash
 # Install build tool and dependencies
-sudo apt install build-essential cmake git pkg-config libgtk-3-dev \
+sudo apt install build-essential cmake git pkg-config libgtk-3-dev libgtk2.0-dev \
     libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
     libxvidcore-dev libx264-dev libjpeg-dev libpng-dev libtiff-dev \
     gfortran openexr libatlas-base-dev python3-dev python3-numpy \
@@ -45,6 +45,7 @@ make -j15
 
 make install
 ```
+
 
 ### Init a writer
 ```cpp
