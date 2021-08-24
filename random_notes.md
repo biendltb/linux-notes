@@ -51,3 +51,9 @@ PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 
 # ================
 ```
+
+## Libraries issues
+### glog and ceres
+Ceres library has an built-in glog. Include those glogs together in cmake could make them conflict. When using glog with ceres, using the `${CERES_LIBRARIES}` in `target_link_libraries`, it will automatically search for the built-in glog and it would be no conflict.
+Glog installed from ubuntu official repository not supported by cmake so it's better installing from source.
+
