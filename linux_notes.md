@@ -36,7 +36,7 @@ rm -rf /src_dir/
 
 ```
   
-### Find some files
+### Find some files/directories
 * Normal find
 
 ```bash
@@ -46,8 +46,18 @@ find /search/dir/ -name *libtiff*.so*
 * Ignore error messages (use <code> grep -v </code> to select non-matching lines)
 
 ```bash 
-find /search/dir/ -name *libtiff*.so* 2>&1 | grep -v "Permission denied"
+find /search/dir/ -name *libtiff*.so* 2>/dev/null
 ```
+
+* Find based on the type (file/directory)
+```bash
+# find a file
+find /search/dir/ -type f -name test 2>/dev/null
+
+# find a directory
+find /search/dir/ -type d -name test 2>/dev/null
+```
+
 
 ### Uncompress/compress .tar with tar
 1. Gzip is a compression tool used to reduce the size of a file
