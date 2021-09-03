@@ -2,6 +2,23 @@ messy command logs
 
 
 ```bash
+
+aws configure --profile satis-root
+
+openvpn3 session-start --config ~/bien.ovpn 
+aws-vault exec satis-root --no-session aws s3 ls
+
+aws-vault login satis-research 
+
+aws --profile satis-research s3 ls
+aws --profile satis-research s3 cp s3://satis-object-detector-models-research/20210422_SATIS-DS-0001_png_darwin_json.zip /data/datasets/satis
+
+Connect to OVH: ssh -i ~/.ssh/satis-engineering-ovh.txt ubuntu@146.59.249.121
+
+ssh -L localhost:8888:localhost:8888 -i ~/satis-research-bien.pem ubuntu@ec2-18-170-28-235.eu-west-2.compute.amazonaws.com
+
+aws --profile satis-manage codeartifact login --tool pip  --domain satis-manage-default --domain-owner 070381681005 --repository satis-artifact-repository-manage-default --region=eu-west-2
+-------------------------------------------------
 # scp
 scp -P 2222 biendltb@dynim.ddns.net:/data/ftp_storage/dynimlabs/stereo-camera/spark/images/buildroot/ubuntu/snapshots/20210621_02/sdcard.img .
 
