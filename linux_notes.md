@@ -15,7 +15,7 @@ scp -P 2222 -r biendltb@dynim.ddns.net:/path/to/source/ /path/to/destination/
 ```bash
 grep -rnw '/path/to/dir' -e 'pattern'
 ```
-Details: https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
+Details: (here)[https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux]
 
 ### Copy a specific types of file and/or with specific pattern of name
 * Case 1: depth level known
