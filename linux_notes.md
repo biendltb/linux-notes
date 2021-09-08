@@ -11,6 +11,12 @@ du -sh /home/* 2> /dev/null
 scp -P 2222 -r biendltb@dynim.ddns.net:/path/to/source/ /path/to/destination/
 ```
 
+### Search for a text from all text files in a specific directory
+```bash
+grep -rnw '/path/to/dir' -e 'pattern'
+```
+Details: https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux
+
 ### Copy a specific types of file and/or with specific pattern of name
 * Case 1: depth level known
 ```bash
