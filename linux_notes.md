@@ -112,9 +112,11 @@ scp -P 2222 -r biendltb@dynim.ddns.net:/path/to/source/ /path/to/destination/
 * Run a program on remote server which serve in localhost and at a specific port
 * To forward the data to a port in our local machine, in our local machine run:
 ```
-ssh -L <port_on_local_machine>:127.0.0.1:<port_of_remote_server> root@ip_address
+ssh -NL <port_on_local_machine>:127.0.0.1:<port_of_remote_server> root@ip_address
 ```
-
+Note:
+* `-N` to avoid opening a new shell
+* Add `-f` to run it in the background
 
 ## File and text editing
 
