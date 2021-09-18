@@ -4,12 +4,6 @@
 ```bash
 du -sh /home/* 2> /dev/null
 ```
-  
-### Copy files in/out from a server
-
-```bash
-scp -P 2222 -r biendltb@dynim.ddns.net:/path/to/source/ /path/to/destination/
-```
 
 ### Search for a text from all text files in a specific directory
 ```bash
@@ -102,6 +96,25 @@ tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 # Unmount after use
 >> sudo umount ~/HDD
 ```
+
+## ssh and scp
+### Access to a remote server with private key
+```
+ssh -i ~/.ssh/your_custom_key.txt root@ip_address
+```
+
+### Copy files in/out from a server
+```bash
+scp -P 2222 -r biendltb@dynim.ddns.net:/path/to/source/ /path/to/destination/
+```
+
+### Port forwarding from the remote server via SSH
+* Run a program on remote server which serve in localhost and at a specific port
+* To forward the data to a port in our local machine, in our local machine run:
+```
+ssh -L <port_on_local_machine>:127.0.0.1:<port_of_remote_server> root@ip_address
+```
+
 
 ## File and text editing
 
