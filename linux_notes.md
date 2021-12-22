@@ -195,3 +195,15 @@ sudo umount /dev/sdx0 /dev/sdx1
 # burn
 sudo dd bs=1M if=/path/to/images/sdcard.img of=/dev/sdx status=progress
 ```
+
+## Anaconda
+### Create conda environment in a specific folder
+1) Create an environment with the location specified
+  ```
+  conda create --prefix=/data/bien_env python=3.8
+  ```
+2) Conda will search in its defaul folder `~/anaconda3/envs` for the list of environments, so we need to place a symbolic link there
+  ```
+  ln -s /data/bien_env ~/anaconda3/envs/bien_env
+  ```
+Now the conda should index the new environment when a new terminal session is started.
