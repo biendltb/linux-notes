@@ -79,6 +79,16 @@ tar -xvzf compressed_file.tar.gz -C /path/to/extraction/dir
 # compress file
 tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 ```
+## Drive
+### Create partition for a new drive using parted
+1. Create partition with parted
+2. Mount the partition
+Check: https://phoenixnap.com/kb/linux-create-partition
+
+If having the error of `mount: wrong fs type, bad option, bad superblock on`, format the partition (Warning: this will wipe out all data)
+```bash
+mkfs.ext4 /dev/xxxx
+```
 
 ### Mount an external hard drive  
 ```bash
