@@ -128,6 +128,12 @@ Note:
 * `-N` to avoid opening a new shell
 * Add `-f` to run it in the background
 
+### rsync to a remote server via ssh key
+
+```
+rsync -aP -e "ssh -i /home/biendltb/.ssh/my-custom-ssh-key.txt"  /from/dir/ ubuntu@141.94.xxx.xxx:/data/test/
+```
+
 ## File and text editing
 
 ### Reverse lines of a file with `rev`
