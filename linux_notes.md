@@ -82,8 +82,30 @@ tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 ## Drive
 ### Create partition for a new drive using parted
 1. Create partition with parted
+  * Check available disk
+  ```bash
+  sudo gparted -l
+  ```
+  * Open the disk
+  ```bash
+  sudo parted /dev/nvme0n1
+  ```
+  * Make a partition table
+  ```bash
+  mklabel gpt
+  ```
+  * Check the table
+  ```bash
+  print
+  ```
+  * Create partition
+  ```bash
+  mkpart primary ext4 1MB 1920GB
+  ```
+
+  Check: https://phoenixnap.com/kb/linux-create-partition
+
 2. Mount the partition
-Check: https://phoenixnap.com/kb/linux-create-partition
 
 If having the error of `mount: wrong fs type, bad option, bad superblock on`, format the partition (Warning: this will wipe out all data)
 ```bash
