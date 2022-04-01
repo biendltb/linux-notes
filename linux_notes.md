@@ -84,23 +84,23 @@ tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 1. Create partition with parted
   * Check available disk
   ```bash
-  sudo gparted -l
+  >> sudo gparted -l
   ```
   * Open the disk
   ```bash
-  sudo parted /dev/nvme0n1
+  >> sudo parted /dev/nvme0n1
   ```
   * Make a partition table
   ```bash
-  mklabel gpt
+  >> mklabel gpt
   ```
   * Check the table
   ```bash
-  print
+  >> print
   ```
   * Create partition
   ```bash
-  mkpart primary ext4 1MB 1920GB
+  >> mkpart primary ext4 1MB 1920GB
   ```
 
   Check: https://phoenixnap.com/kb/linux-create-partition
@@ -109,7 +109,7 @@ tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 
 If having the error of `mount: wrong fs type, bad option, bad superblock on`, format the partition (Warning: this will wipe out all data)
 ```bash
-mkfs.ext4 /dev/xxxx
+>> mkfs.ext4 /dev/xxxx
 ```
 
 ### Mount an external hard drive  
@@ -127,6 +127,12 @@ mkfs.ext4 /dev/xxxx
 
 # Unmount after use
 >> sudo umount ~/HDD
+```
+
+Note: if the mount folder is created at root. Permission of that folder should be changed for app to work properly. Consider:
+```bash
+>> sudo chmod -R 755 /data
+>> chown -R ubuntu:ubuntu /data
 ```
 
 ## ssh and scp
