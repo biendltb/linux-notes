@@ -102,6 +102,10 @@ tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
   ```bash
   >> mkpart primary ext4 1MB 1920GB
   ```
+  * Quit
+  ```bash
+  >> quit
+  ```
 
   Check: https://phoenixnap.com/kb/linux-create-partition
 
@@ -132,7 +136,7 @@ If having the error of `mount: wrong fs type, bad option, bad superblock on`, fo
 Note: if the mount folder is created at root. Permission of that folder should be changed for app to work properly. Consider:
 ```bash
 >> sudo chmod -R 755 /data
->> chown -R ubuntu:ubuntu /data
+>> sudo chown -R ubuntu:ubuntu /data
 ```
 
 ## ssh and scp
