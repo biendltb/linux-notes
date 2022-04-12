@@ -113,7 +113,7 @@ tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 
 If having the error of `mount: wrong fs type, bad option, bad superblock on`, format the partition (Warning: this will wipe out all data)
 ```bash
->> mkfs.ext4 /dev/xxxx
+>> sudo mkfs.ext4 /dev/nvme0n1
 ```
 
 ### Mount an external hard drive  
