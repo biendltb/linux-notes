@@ -255,3 +255,25 @@ sudo dd bs=1M if=/path/to/images/sdcard.img of=/dev/sdx status=progress
   ln -s /data/bien_env ~/anaconda3/envs/bien_env
   ```
 Now the conda should index the new environment when a new terminal session is started.
+
+
+## ffmpeg
+
+### Extract video to frame
+* Extract single video to images with names are frame id of 7 digits
+  ```bash
+  ffmpeg -i /path/to/video.mp4 -vsync 0 -filter:v fps=6 ./images/%07d.png
+  ```
+ 
+* Extract all video (.mp4) in a folder to frames
+  ```bash
+  cd /path/to/video/dir
+  for v in $(ls); do g=$(echo $v | sed -e "s/.mp4//g"); mkdir ../images/$g; ffmpeg -i $v -vsync 0 -filter:v fps=12 ../images/$g/%07d.png; done;
+  ```
+
+### Change video fps
+
+Change all videos in a folder to a fixed FPS
+```bash
+mkdir ../resampled_videos; for v in $(ls); do ffmpeg -i $v -vsync 0 -filter:v fps=12 ../resampled_videos/$v; done;
+```
