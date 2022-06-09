@@ -277,3 +277,10 @@ Change all videos in a folder to a fixed FPS
 ```bash
 mkdir ../resampled_videos; for v in $(ls); do ffmpeg -i $v -vsync 0 -filter:v fps=12 ../resampled_videos/$v; done;
 ```
+
+### Resize videos to a specific size
+* Resize and maintain the same scale ratio
+  ```bash
+  ffmpeg -i video.mp4 -filter:v scale="1280:trunc(ow/a/2)*2" -c:a copy output.mp4
+  ```
+  Check [here](https://superuser.com/questions/624563/how-to-resize-a-video-to-make-it-smaller-with-ffmpeg) for more details.
