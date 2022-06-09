@@ -279,7 +279,7 @@ mkdir ../resampled_videos; for v in $(ls); do ffmpeg -i $v -vsync 0 -filter:v fp
 ```
 
 ### Resize videos to a specific size
-* Resize and maintain the same scale ratio
+* Resize width to 1280 and maintain the same scale ratio
   ```bash
   ffmpeg -i video.mp4 -filter:v scale="1280:trunc(ow/a/2)*2" -c:a copy output.mp4
   ```
