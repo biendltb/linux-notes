@@ -284,3 +284,13 @@ mkdir ../resampled_videos; for v in $(ls); do ffmpeg -i $v -vsync 0 -filter:v fp
   ffmpeg -i video.mp4 -filter:v scale="1280:trunc(ow/a/2)*2" -c:a copy output.mp4
   ```
   Check [here](https://superuser.com/questions/624563/how-to-resize-a-video-to-make-it-smaller-with-ffmpeg) for more details.
+  
+### Record a video with ffmpeg (v4l2 backend)
+1. Check available resolutions and fps of the camera using v4l2
+  ```bash
+  v4l2-ctl -d /dev/video0  --list-formats-ext
+  ```
+2. Record video
+  ```bash
+  ffmpeg -f v4l2 -framerate 30 -video_size 1920x1080 -input_format mjpeg -i /dev/video0 out.mp4
+  ```
