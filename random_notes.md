@@ -3,6 +3,19 @@
 * Download and install CuDNN + Cuda from NVIDIA website (Note: use the `runtime` version).
 * Install CUDA toolkit: `sudo apt install nvidia-cuda-toolkit`
 
+### Reinstall CUDA and nvidia-driver
+#### Uninstall nvidia drivers
+* Show all drivers
+```bash
+dpkg -l | grep nvidia
+```
+* Uninstall all of drivers shown in the previous step
+```bash
+ sudo apt purge <nvidia-packages> 
+```
+* Reboot the machine
+* Download the cuda runtime file which goes with nvidia driver and install
+
 ### To disable AMD graphic cards on Ubuntu PC
 https://askubuntu.com/questions/771562/16-04-power-off-discrete-graphics-ati-amd
 
