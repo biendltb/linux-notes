@@ -1,3 +1,14 @@
+#### Tool for search text in all file in the current directory
+Install:
+```bash
+sudo apt install silversearcher-ag
+```
+Usage:
+```bash
+cd /path/to/target/dir
+ag <text>
+```
+
 ### NVIDIA driver / CUDA / CuDNN
 * Right after the installation of the system, install NVIDIA driver from as here: http://ubuntuhandbook.org/index.php/2019/03/install-nvidia-418-43-g-sync-support-ubuntu-18-04/
 * Download and install CuDNN + Cuda from NVIDIA website (Note: use the `runtime` version).
