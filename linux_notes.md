@@ -58,6 +58,12 @@ find /search/dir/ -type f -name test 2>/dev/null
 find /search/dir/ -type d -name test 2>/dev/null
 ```
 
+### Schedule bash command
+* Trigger a command after a period of time (could use `h`: hour, `m`: minute and `s` second)
+```bash
+# 1h = 60m = 3600s
+sleep 1h && <command>
+```
 
 ### Uncompress/compress .tar with tar
 1. Gzip is a compression tool used to reduce the size of a file
