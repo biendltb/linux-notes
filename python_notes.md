@@ -16,3 +16,17 @@ time_obj_with_tz = london_tz.localize(time_obj)
 # convert time to UTC time
 time_obj_utc = time_obj_with_tz.astimezone(pytz.utc)
 ```
+
+## Packaging
+### setup.py
+* To include a non-python file in the package build
+We can set in the `setup()`:
+```python
+setup(
+...
+package_data={'': ['*.c', '*.h', '*.cu', '*.cuh']},
+...
+)
+```
+Leave package name as an empty string means apply for all packages.
+Details: https://stackoverflow.com/a/1857436/6088342
