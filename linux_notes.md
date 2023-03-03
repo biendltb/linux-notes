@@ -300,3 +300,11 @@ mkdir ../resampled_videos; for v in $(ls); do ffmpeg -i $v -vsync 0 -filter:v fp
   ```bash
   ffmpeg -f v4l2 -framerate 30 -video_size 1920x1080 -input_format mjpeg -i /dev/video0 out.mp4
   ```
+
+### Crop video by frame id
+
+For example:
+Cropping video from frame 140 to 190
+```bash
+ffmpeg -i video.mp4 -acodec copy -vf select="between(n\,140\,190),setpts=PTS-STARTPTS" -n ouput.mp4
+```
