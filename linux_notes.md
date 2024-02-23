@@ -308,3 +308,14 @@ Cropping video from frame 140 to 190
 ```bash
 ffmpeg -i video.mp4 -acodec copy -vf select="between(n\,140\,190),setpts=PTS-STARTPTS" -n ouput.mp4
 ```
+### Transpose video (or rotate)
+```bash
+ffmpeg -i in.mov -vf "transpose=2" out.mov
+```
+With transpose options:
+```txt
+0 = 90° counterclockwise and vertical flip (default)
+1 = 90° clockwise
+2 = 90° counterclockwise
+3 = 90° clockwise and vertical flip
+```
