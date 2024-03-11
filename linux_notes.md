@@ -319,3 +319,17 @@ With transpose options:
 2 = 90° counterclockwise
 3 = 90° clockwise and vertical flip
 ```
+
+## Pycharm
+
+To check available `pycharm-professional` versions/channels:
+
+```
+snap info pycharm-professional
+```
+
+To downgrade to a specific version:
+
+```
+sudo snap refresh pycharm-professional --channel=2022.3/stable
+```
