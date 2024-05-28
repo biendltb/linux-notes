@@ -85,6 +85,19 @@ tar -xvzf compressed_file.tar.gz -C /path/to/extraction/dir
 # compress file
 tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 ```
+Note: tar will maintains that file directory structure when decompressing
+
+To split the file for easy transfer, we can use `split` and then `concat` at the other end
+
+```bash
+# split
+split -b 100M archive.tar.gz "archive.tar.gz.part-"
+
+# reconstruct
+cat archive.tar.gz.part-* > archive.tar.gz
+```
+
+
 ## Drive
 ### Create partition for a new drive using parted
 1. Create partition with parted
