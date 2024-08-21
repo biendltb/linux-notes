@@ -333,6 +333,13 @@ With transpose options:
 3 = 90° clockwise and vertical flip
 ```
 
+### Extract audio from video to mp3
+The audio bitrate could be changed to 192K, 320K, etc.
+```bash
+ffmpeg -i video.mp4 -b:a 320K -vn music.mp3
+```
+
+
 ## Pycharm
 
 To check available `pycharm-professional` versions/channels:
