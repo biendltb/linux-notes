@@ -333,12 +333,25 @@ With transpose options:
 3 = 90° clockwise and vertical flip
 ```
 
-### Extract audio from video to mp3
+### Extract audio from video and save to mp3
 The audio bitrate could be changed to 192K, 320K, etc.
 ```bash
 ffmpeg -i video.mp4 -b:a 320K -vn music.mp3
 ```
 
+### Convert m4a to mp3
+
+Convert single file:
+* `-q:a` to set the quality of the conversion, the lower the better (0-3: best; 4: default; 6: acceptable: 7-9: poor)
+
+```bash
+ffmpeg -i input.m4a -c:v copy -c:a libmp3lame -q:a 4 output.mp3
+```
+
+Convert multiple files:
+```bash
+for f in *.m4a; do ffmpeg -i "$f" -codec:v copy -codec:a libmp3lame -q:a 0 "${f%.m4a}.mp3"; done
+```
 
 ## Pycharm
 
