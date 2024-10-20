@@ -103,7 +103,7 @@ cat archive.tar.gz.part-* > archive.tar.gz
 1. Create partition with parted
   * Check available disk
   ```bash
-  >> sudo gparted -l
+  >> sudo parted -l
   ```
   * Open the disk
   ```bash
