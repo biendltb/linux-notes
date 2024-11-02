@@ -87,6 +87,7 @@ tar -cvzf arbitrary_name.tar.gz /to/be/compressed/dir/
 ```
 Note: tar will maintains that file directory structure when decompressing
 
+#### Split a compressed file
 To split the file for easy transfer, we can use `split` and then `concat` at the other end
 
 ```bash
@@ -95,6 +96,14 @@ split -b 100M archive.tar.gz "archive.tar.gz.part-"
 
 # reconstruct
 cat archive.tar.gz.part-* > archive.tar.gz
+```
+
+#### Compress audio folder with tar and 7z
+
+7z is very good at compressing raw audio (.wav) folder with higher ratio than other format
+
+```bash
+tar cf - ./audio_folder | 7z a -si audio_folder.tar.7z
 ```
 
 
