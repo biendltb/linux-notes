@@ -234,6 +234,7 @@ install_gui_apps() {
         vlc
         gimp
         inkscape
+        gnome-screenshot
     )
 
     for app in "${gui_apps[@]}"; do
