@@ -235,6 +235,7 @@ install_gui_apps() {
         gimp
         inkscape
         gnome-screenshot
+        libreoffice
     )
 
     for app in "${gui_apps[@]}"; do
