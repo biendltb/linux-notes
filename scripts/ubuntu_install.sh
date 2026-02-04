@@ -108,6 +108,7 @@ install_cli_tools() {
         tree
         unzip
         jq
+        ifconfig
     )
 
     for tool in "${cli_tools[@]}"; do
