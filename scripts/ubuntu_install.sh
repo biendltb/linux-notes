@@ -102,6 +102,7 @@ install_cli_tools() {
         curl
         wget
         git
+        git-lfs
         vim
         tmux
         htop
