@@ -109,7 +109,7 @@ install_cli_tools() {
         tree
         unzip
         jq
-        ifconfig
+        net-tools
     )
 
     for tool in "${cli_tools[@]}"; do
@@ -237,7 +237,6 @@ install_gui_apps() {
         gimp
         inkscape
         gnome-screenshot
-        libreoffice
     )
 
     for app in "${gui_apps[@]}"; do
